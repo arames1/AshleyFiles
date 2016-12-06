@@ -1,0 +1,38 @@
+<html>
+	<head>
+	<body>
+	<div class="container">
+	<h1>JS Test 07</h1>
+	<label>Enter a number</label>
+	<input id="in01" onkeyup="isNumber()" type="text" />
+	<p id="out01"></p>
+	<label>Enter a providence of Canada</label>
+	<input id="out02" onkeyup="isProvince()" type="text" />
+	<p id="out02"></p>
+	<script>
+	
+	function isNumber() {
+		var x = document.getElementById("out01").value;
+		if(!isNaN(x))
+		document.getElementById("out01").innerHTML = "Number";
+		else
+		document.getElementById("out01").innerHTML = "Not Number";
+		}
+		
+		
+	function isProvince(){
+	
+	var y = document.getElementById("in02").valuetoLowerCase();
+	if(y == "nunavut" || y == "quebec" || y == "northwest territories" ||y == "british columbia" ||
+	y == "ontario" || y == "alberta" ||y == "saskatchewan" ||y == "manitoba" ||
+	y == "yukon" || y == "newfoundland and labrador" ||y == "new brunswick" ||y == "nova scotia" ||
+	y == "prince edward island" ||
+	document.getElementId("out02").innerHTML = "Province";
+	else
+	document.getElementById("out02").innerHTML = "Not a Province";
+	
+	}	
+	</script>
+	</div>
+	</body>
+	</html>

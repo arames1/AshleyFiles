@@ -1,0 +1,121 @@
+<!doctype html>
+<!-- file: js_test10.html 
+Events + Yahtzee -->
+<html>
+	
+	<body>
+	
+		<form action="#" method="post" id="loginform">
+			<label>Username:</label>
+			<input type="text" name="username" id="username" />
+			<br />
+			
+			<label>Password:</label>
+			<input type="password" name="password" id="password" />
+			<br />
+			
+			<button onclick ="alert('123...');">hint</button>
+			<button id="buttonTwo">ButtonTwo</button>
+			<input type="submit" id="BtnSubmit" value="Submit" />
+		</form>
+		<hr />
+
+
+		<input id = "dice1Box" type ="checkbox" />
+		<span id = "dice1Span"></span>
+		<br />
+		<input id = "dice2Box" type ="checkbox" />
+		<span id = "dice2Span"></span>
+		<br />
+		<input id = "dice3Box" type ="checkbox" />
+		<span id = "dice3Span"></span>
+		<br />
+		<input id = "dice4Box" type ="checkbox" />
+		<span id = "dice4Span"></span>
+		<br />
+		<input id = "dice5Box" type ="checkbox" />
+		<span id = "dice5Span"></span>
+		<br />
+		<span id = "isYahtzee"></span>
+		<br />
+		<button id="rerollButton" onClick="reroll()">Reroll</button>
+		
+		<script>	
+			var x = document.getElementById("BtnSubmit");
+			x.value = "Useless";
+			x.style = "color: blue;";
+			var b = document.getElementById("buttonTwo");
+			
+			b.onmouseover = function () {
+				var d = new Date();
+				console.log("date: " + d);			
+			};
+			
+			//Declare the arrays to hold the dice's values on each roll
+			var a = new Array();
+			var dice = new Array();
+			var checker = new Array();
+			a[0] = 1 + Math.floor(6 * (Math.random()));
+			a[1] = 1 + Math.floor(6 * (Math.random()));
+			a[2] = 1 + Math.floor(6 * (Math.random()));
+			a[3] = 1 + Math.floor(6 * (Math.random()));
+			a[4] = 1 + Math.floor(6 * (Math.random()));
+			
+			
+			dice[0] = document.getElementById("dice1");
+			dice[1] = document.getElementById("dice2");
+			dice[2] = document.getElementById("dice3");
+			dice[3] = document.getElementById("dice4");
+			dice[4] = document.getElementById("dice5");
+			
+			//Displays if the dice is checked 
+			checker[0] = document.getElementById("dice1Checker");
+			checker[1] = document.getElementById("dice2Checker");
+			checker[2] = document.getElementById("dice3Checker");
+			checker[3] = document.getElementById("dice4Checker");
+			checker[4] = document.getElementById("dice5Checker");
+			
+			//Displays the random value for the dice
+			dice[0].innerHTML = "Dice 1: " + a[0];
+			dice[1].innerHTML = "Dice 2: " + a[1];
+			dice[2].innerHTML = "Dice 3: " + a[2];
+			dice[3].innerHTML = "Dice 4: " + a[3];
+			dice[4].innerHTML = "Dice 5: " + a[4];
+			if (a[0] == a[1] && a[1] == a[2] && a[2] == a[3] && a[3] == a[4])
+			{
+				document.getElementById("isYahtzee").innerHTML = "Yahtzee";
+			}
+			else
+			{
+				document.getElementById("isYahtzee").innerHTML = " Not Yahtzee";
+			}
+			
+			//Function for a reroll when the user specifies and it is necessary
+			function reroll()
+			{
+				
+				for (i = 0; i < a.length; i++)
+				{
+					if (checker[i].checked)
+					{
+						a[i] = 1 + Math.floor(6 * (Math.random()))
+						dice[i].innerHTML = "Dice " + (i+1) + ": " + a[i];
+					}
+				}
+				
+				//Statement to check and see if the roll is in fact a yahtzee
+					if (a[0] == a[1] && a[1] == a[2] && a[2] == a[3] && a[3] == a[4])
+					{
+						document.getElementById("isYahtzee").innerHTML = "Yahtzee";
+					}
+					else
+					{
+						document.getElementById("isYahtzee").innerHTML = " Not Yahtzee";
+					}
+			}
+			
+		</script>	
+		
+	</body>
+	
+</html>

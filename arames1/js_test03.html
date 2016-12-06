@@ -1,0 +1,26 @@
+<html>
+	<body>
+		<script>
+			for(var i = 0; i < 10; i++){
+			document.write((i+1) + ". hello, world<br/>");
+		}
+		
+		x = 1234567890;
+		sum = 0;
+		while(x > 0){
+			sum+= x % 10;
+			x = Math.floor(x/10);
+		}
+		
+		document.write("<br/>" + sum + "<br/>");
+		s = "Zippy";
+		var i = 0;
+		
+		do{
+			document.write("<br/>" + s[i]);
+			i++;
+		}
+		while(i < 5);
+	</script>
+	</body>
+</html>
