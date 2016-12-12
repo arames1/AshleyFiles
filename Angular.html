@@ -1,0 +1,148 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+</head>
+
+<body ng-app="myApp">
+    <div ng-controller="ctrl1">
+        <label>Prefix:
+            <select ng-model="pre" ng-change="updateAPI()">
+                <option value="CS">CS</option>
+                <option value="CIS">CIS</option>
+            </select>
+        </label>
+        <br>
+        <label>Course Number:
+            <input type="text" ng-model="num" ng-change="updateAPI()">
+        </label>
+        <br><br> {{pre+"-"+num}}<br> {{response.courses[0].description}}
+        <div ng-repeat="item in api" style="border-style:solid;border-width:1px;float:left;padding:5px;">
+            <p>Semester: {{item.term}}</p>
+            <div ng-repeat="class in item.meetingTimes">
+                <p>Room: {{class.building+"-"+class.room}} {{class.method}}</p>
+                <p>Time: {{class.days}} {{class.startTime+"-"+class.endTime}}</p>
+                
+                <br>
+            </div>
+        </div>
+        <div data-ng-bind="url"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    var myApp = angular.module('myApp', []);
+    var xmlhttp, api;
+    myApp.controller('ctrl1', ['$scope', function($scope) {
+        $scope.num = "216";
+        $scope.pre = "CS";
+
+        /* $http({
+            method: 'GET',
+            url: "http://api.svsu.edu/courses?prefix=" + $scope.pre + "&courseNumber=" + $scope.num
+        }).then(function sucessCallback(response) {
+            $scope.api = JSON.parse(response.responseText);
+        });
+        */
+
+        $scope.api = [{
+            "academicLevel": "UG",
+            "capacity": "30",
+            "comments": [],
+            "courseNumber": "216",
+            "credit": "4",
+            "description": "This course continues the development of computer programming techniques introduced in CS 116 . Topics include data abstraction, object-oriented programming, linear and nonlinear data structures and analysis of sort and search routines including inheritance, polymorphism, recursion lists, linked-lists, stacks, queues and binary trees.",
+            "instructors": [{
+                "username": "pdharam",
+                "name": "P. Dharam"
+            }],
+            "lineNumber": "0482",
+            "location": "UC",
+            "meetingTimes": [{
+                "method": "LEC",
+                "building": "Curtis",
+                "room": "118",
+                "days": "M",
+                "startTime": "8:30 AM",
+                "endTime": "10:20 AM",
+                "instructor": "gpcorser"
+            }, {
+                "method": "LEC",
+                "building": "Curtis",
+                "room": "127",
+                "days": "W",
+                "startTime": "8:30 AM",
+                "endTime": "10:20 AM"
+            }, {
+                "method": "LEC",
+                "building": "Curtis",
+                "room": "118",
+                "days": "M",
+                "startTime": "8:30 AM",
+                "endTime": "10:20 AM"
+            }],
+            "prefix": "CIS",
+            "prerequisites": "CS 116 (Previous, Required)  ",
+            "seatsAvailable": "3",
+            "section": "01",
+            "status": "Open",
+            "term": "16\/FA",
+            "title": "Client Side Web Appl Devel"
+        }, {
+            "academicLevel": "UG",
+            "capacity": "30",
+            "comments": [],
+            "courseNumber": "255",
+            "credit": "4",
+            "description": "This course focuses on web design and the client side of web application development. Topics include XHTML, Cascading Style Sheets (CSS), the Document Object Model, creating dynamic content and architecture, and building\/deploying web pages and web sites. A large portion of the class is spent on examining the ECMA\/JavaScript client side scripting language. Current topics of interest such as Web 2.0 and AJAX are explored. An introduction to using both commercial and open source web development tools is also provided.",
+            "instructors": [{
+                "username": "gpcorser",
+                "name": "G. Corser"
+            }],
+            "lineNumber": "0050",
+            "location": "UC",
+            "meetingTimes": [{
+                "method": "LEC",
+                "building": "SE",
+                "room": "135",
+                "days": "TR",
+                "startTime": "08:00 AM",
+                "endTime": "12:10 PM",
+                "instructor": "gpcorser"
+            }],
+            "prefix": "CIS",
+            "prerequisites": "CS 116 (Previous, Required)  ",
+            "seatsAvailable": "10",
+            "section": "11",
+            "status": "Open",
+            "term": "16\/SP",
+            "title": "Client Side Web Appl Devel"
+        }, {
+            "academicLevel": "UG",
+            "capacity": "30",
+            "comments": [],
+            "courseNumber": "255",
+            "credit": "4",
+            "description": "This course focuses on web design and the client side of web application development. Topics include XHTML, Cascading Style Sheets (CSS), the Document Object Model, creating dynamic content and architecture, and building\/deploying web pages and web sites. A large portion of the class is spent on examining the ECMA\/JavaScript client side scripting language. Current topics of interest such as Web 2.0 and AJAX are explored. An introduction to using both commercial and open source web development tools is also provided.",
+            "instructors": [{
+                "username": "gpcorser",
+                "name": "G. Corser"
+            }],
+            "lineNumber": "0483",
+            "location": "ONL",
+            "meetingTimes": [{
+                "method": "ONL",
+                "instructor": "gpcorser"
+            }],
+            "prefix": "CIS",
+            "prerequisites": "CS 116 (Previous, Required)  ",
+            "seatsAvailable": "16",
+            "section": "90",
+            "status": "Open",
+            "term": "16\/FA",
+            "title": "Client Side Web Appl Devel"
+        }];
+
+    }]);
+</script>
+
+</html>
